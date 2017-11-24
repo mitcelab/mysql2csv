@@ -67,6 +67,7 @@ func QueryToCSV(db *sql.DB, query string, fout io.Writer) {
 	}
 
 	writer := csv.NewWriter(fout)
+	defer writer.Flush()
 	writer.Write(header)
 
 	counter := 0
